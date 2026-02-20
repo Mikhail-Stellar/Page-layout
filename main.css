@@ -1,0 +1,978 @@
+/* Базовые стили */
+*{
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Museo Cyrl 700';
+    src: url('Fonts/MuseoCyrl700.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('Fonts/OpenSans.ttf') format('truetype');
+    font-display: block;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    overflow-x: hidden;
+}
+
+/* Блоки */
+.block {
+    padding: 20px;
+    position: relative;
+}
+
+.block--background {
+    background: none; 
+    padding: 50px 0;
+    margin: 50px 0;
+    position: relative;
+    z-index: 1; 
+}
+
+.block--with-background {
+    position: relative;
+    padding: 50px 20px;
+    margin: 50px 0 0 0;
+    overflow: hidden;
+}
+
+.background-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        url('Pictures/Background.png');
+    z-index: 1; 
+}
+
+/* Контейнер для всего содержимого */
+.content-wrapper {
+    position: relative;
+    z-index: 2; 
+}
+
+.block--first {
+    position: relative;
+    padding: 70px 20px;
+    margin: 50px 0;
+    overflow: hidden;
+}
+
+.block--first::before {
+    content: '';
+    position: absolute;
+    top: 380px; /* Высота header + первый ряд карточек */
+    left: 0;
+    width: 100%;
+    height: calc(100% - 300px); /* Остальная часть блока */
+    background: 
+        url('Pictures/Background.png');
+    z-index: 0;
+}
+
+.block__header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.block__title {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    font-size: 38px;
+    position: relative;
+    z-index: 1;
+    font-family: 'Museo Cyrl 700', sans-serif;
+}
+
+.block__description {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+    font-family: 'Open Sans', sans-serif;
+    text-align: justify;
+}
+
+.highlight {
+    color: rgb(255, 95, 1);
+}
+
+/* Кнопки */
+.button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.button--service {
+    background-color: rgb(77, 89, 161);
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+.button--detailed {
+    background-color: rgb(77, 89, 161);
+    color: #fff;
+    border: 2px solid rgb(77, 89, 161);
+    display: none;
+    margin-top: 10px;
+    padding: 13px 20px;
+}
+
+.button--order {
+    background-color: rgb(255, 95, 1);
+    color: white;
+    padding: 15px 40px;
+    font-size: 14px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.button--idea {
+    background-color: rgb(77, 89, 161);
+    color: white;
+    padding: 15px 30px;
+    font-size: 14px;
+    border: none;
+    border-radius: 3px;
+}
+
+.button--price {
+    padding: 15px 30px;
+    background-color: rgb(255, 95, 1);
+    color: white;
+    border: none;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.button--submit {
+    padding: 10px 18px;
+    background-color: rgb(255, 95, 1);
+    color: white;
+    border: none;
+    font-size: 12px;
+    float: right;
+    margin-top: -35px;
+    border-radius: 0%;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Карточки услуг */
+.services {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    padding: 20px;
+    font-size: 24px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+.service-card {
+    height: 540px;
+    width: auto;
+    max-width: 370px;
+    flex: 1 1 300px;
+    background-color: #ffffff;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.service-card:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.service-card:hover .button--service {
+    display: none;
+}
+
+.service-card:hover .button--detailed {
+    display: inline-block;
+}
+
+.service-card__image {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+}
+
+.service-card__content {
+    margin-top: 30px;
+    padding: 0 20px;
+}
+
+.service-card__title {
+    font-size: 25px;
+    display: block;
+    margin-bottom: 20px;
+    font-family: 'Museo Cyrl 700', sans-serif;
+}
+
+/* Карточки отделки */
+.finishing-options {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    font-size: 25px;
+    color: #ffffff;
+    cursor: pointer;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 5px;
+    align-items: stretch;
+}
+
+.finishing-options--wide {
+    margin-top: 5px;
+}
+
+.finishing-card {
+    position: relative;
+    overflow: hidden;
+    height: 450px;
+    width: auto;
+    max-width: 390px;
+    flex: 1 1 300px;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    position: relative;
+    z-index: 3;
+}
+
+.finishing-card--wide {
+    height: 300px;
+    width: auto;
+    max-width: 587px;
+    flex: 1 1 420px;
+}
+
+.finishing-card--plastic { 
+    background-image: url('Pictures/Finishing the balcony with plastic panels.png'); 
+}
+.finishing-card--wood { 
+    background-image: url('Pictures/Finishing the loggia with wood.png'); 
+}
+.finishing-card--drywall { 
+    background-image: url('Pictures/Finishing the balcony with plasterboard.png'); 
+}
+.finishing-card--paint { 
+    background-image: url('Pictures/Painting and wallpapering.png'); 
+}
+.finishing-card--laminate { 
+    background-image: url('Pictures/Finishing the balcony with laminate.png'); 
+}
+.finishing-card--vinyl { 
+    background-image: url('Pictures/Finishing a balcony with vinyl paneling.png'); 
+}
+.finishing-card--external { 
+    background-image: url('Pictures/External finishing of the balcony.png'); 
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+.finishing-card__title {
+    margin: 70px 30px 0px 40px;
+    font-size: 25px;
+    line-height: 1.3;
+    position: relative;
+    z-index: 2;
+    font-family: 'Museo Cyrl 700', sans-serif;
+}
+
+.finishing-card__title-wide {
+    margin: 70px 40px 90px 40px;
+    font-size: 25px;
+    position: relative;
+    z-index: 2;
+    font-family: 'Museo Cyrl 700', sans-serif;
+}
+
+.finishing-card__price {
+    margin: 200px 40px 0px 40px;
+    font-size: 25px;
+    position: relative;
+    z-index: 2;
+    font-family: 'Museo Cyrl 700', sans-serif;
+}
+
+.finishing-card__price-wide {
+    margin: 0px 0px 60px 40px;
+    position: relative;
+    z-index: 2;
+    font-family: 'Museo Cyrl 700', sans-serif;
+}
+
+.finishing-card__price-value {
+    font-size: 35px;
+}
+
+.finishing-card__description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 30px 20px 0px 40px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    z-index: 3;
+}
+
+.finishing-card:hover .finishing-card__description {
+    opacity: 1;
+}
+
+.finishing-card.is-open .finishing-card__description {
+    opacity: 1;
+}
+
+.finishing-card.is-open .button--order {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.finishing-card.is-open .finishing-card__title,
+.finishing-card.is-open .finishing-card__title-wide,
+.finishing-card.is-open .finishing-card__price,
+.finishing-card.is-open .finishing-card__price-wide {
+    opacity: 0;
+}
+
+/* Удобный скролл текста внутри оверлея на телефоне */
+.finishing-card__description {
+    -webkit-overflow-scrolling: touch;
+}
+
+.finishing-card__description-title {
+    font-size: 25px;
+    margin: 40px 0 20px 0;
+    padding-right: 20px;
+    color: white;
+    line-height: 1.2;
+    font-family: 'Museo Cyrl 700', sans-serif;
+}
+
+.finishing-card__description-text {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.finishing-card .button--order {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease 0.1s;
+    z-index: 4;
+}
+
+.finishing-card:hover .button--order {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.finishing-card:hover .finishing-card__title,
+.finishing-card:hover .finishing-card__title-wide,
+.finishing-card:hover .finishing-card__price,
+.finishing-card:hover .finishing-card__price-wide {
+    opacity: 0;
+}
+
+/* Карточки идей */
+.ideas {
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    gap: 35px;
+    text-align: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.idea-card {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    width: 370px;
+    margin-bottom: 10px;
+}
+
+.idea-card__image {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.idea-card:hover .idea-card__image {
+    opacity: 0.55;
+    filter: none;
+}
+
+.idea-card__text {
+    background-color: rgb(230, 230, 230);
+    border: 1px;
+    padding: 15px 20px; 
+    margin-top: -3px;
+    margin-bottom: 0;
+    height: 60px; 
+    display: flex; 
+    align-items: center;
+    justify-content: center; 
+    text-align: center;
+    line-height: 1.3; 
+    font-size: 20px; 
+    box-sizing: border-box; 
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+}
+
+.idea-card .button--idea {
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.idea-card:hover .button--idea {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Параметры  */
+.parameters {
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    gap: 35px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.parameter-card {
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+    width: 370px;
+    height: 480px;
+    background-color: #ffffff;
+    position: relative;
+    margin-top: 150px;
+    margin-bottom: 30px;
+    overflow: visible;
+}
+
+.parameter-card__image {
+    position: absolute;
+    top: -160px; /* Половина высоты картинки (310px/2 ≈ 155px + запас) */
+    left: 50%; 
+    transform: translateX(-50%);
+    width: 310px;
+    height: 310px;
+    object-fit: cover;
+}
+
+.parameter-card__content {
+    padding: 140px 25px 25px 25px;
+    position: relative;
+}
+
+.parameter-card__title {
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    color: #333;
+    font-family: 'Museo Cyrl 700', sans-serif;
+}
+
+.parameter-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.parameter-list__item {
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px dashed #ddd;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.parameter-list__item:last-child {
+    border-bottom: none;
+}
+
+.parameter-list__text {
+    flex: 1;
+    padding-right: 10px;
+}
+
+.parameter-list__price {
+    color: rgb(77, 89, 161);
+    font-weight: bold;
+    white-space: nowrap;
+    min-width: 90px;
+    text-align: right;
+}
+
+.parameter-list__line {
+    display: none;
+}
+
+/* Цены */
+.price-types {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.price-type {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 0;
+    font-size: 16px;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+}
+
+.price-type__info {
+    width: 490px;
+    height: 370px;
+    margin: 0;
+    padding: 35px 40px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    transform: translateY(10%);
+    }
+
+.price-type__title {
+    font-size: 25px;
+    margin: 0 0 15px 0;
+    font-family: 'Museo Cyrl 700', sans-serif;
+}
+
+.price-type__description {
+    margin: 0 0 20px 0;
+    line-height: 1.5;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+
+.price-type__price {
+    margin: 0 0 20px 0;
+    line-height: 1.4;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+
+.price-type__value {
+    color: rgb(255, 95, 1);
+    font-size: 22px;
+}
+
+.price-type__text {
+    color: rgb(255, 95, 1);
+    font-size: 14px;
+}
+
+.price-type__examples {
+    width: 690px;
+    height: 430px;
+    margin: 0;
+    background-color: #313981;
+    color: #ffffff;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px 34px;
+    padding: 28px 36px;
+    box-sizing: border-box;
+    align-content: center;
+}
+
+.price-type__example {
+    margin: 0;
+    text-align: center;
+}
+
+.price-type__chart {
+    width: 260px;
+    height: 130px;
+    object-fit: contain;
+    border-radius: 0;
+    box-sizing: border-box;
+    display: block;
+    margin: 0 auto 10px auto;
+}
+
+.price-type__example-text {
+    margin: 0;
+    transform: none;
+    font-size: 19px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Форма */
+.form {
+    width: 390px;
+    height: 450px;
+    background: white;
+    border: 5px solid rgb(255, 95, 1);
+    color: #333;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 25px 20px;
+}
+
+.form__title {
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 20px 0;
+    line-height: 1.3;
+    color: #000000;
+    font-family: 'Museo Cyrl 700', sans-serif;
+}
+
+.form__container {
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+
+.form__container input,
+.form__container textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: white;
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+}
+
+.form__container input:focus,
+.form__container textarea:focus {
+    outline: none;
+    border-color: rgb(255, 95, 1);
+}
+
+.form__row {
+    display: flex;
+    gap: 8px;
+}
+
+.form__row input {
+    width: calc(50% - 4px);
+}
+
+.form__container textarea {
+    height: 60px;
+    resize: none;
+}
+
+.form__privacy {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #666;
+    text-align: left;
+}
+
+.form__container button[type="submit"]:hover {
+    background-color: #e55a00;
+}
+
+/* МЕДИА-ЗАПРОСЫ */
+@media (max-width: 1024px) {
+    .block__title {
+        font-size: 32px;
+    }
+
+    .services,
+    .finishing-options,
+    .ideas,
+    .parameters {
+        gap: 20px;
+    }
+    .service-card {
+        flex: 1 1 320px;
+        max-width: 370px;
+        width: auto;
+    }
+    .finishing-card {
+        flex: 1 1 320px;
+        max-width: 390px;
+        width: auto;
+    }
+    .finishing-card--wide {
+        flex: 1 1 520px;
+        max-width: 587px;
+        width: auto;
+    }
+    .idea-card {
+        flex: 1 1 320px;
+        max-width: 370px;
+        width: auto;
+    }
+    .parameter-card {
+        flex: 1 1 320px;
+        max-width: 370px;
+        width: auto;
+        height: auto;
+        min-height: 480px;
+    }
+    .price-type {
+        flex-direction: column;
+        align-items: center;
+    }
+    .price-type__info,
+    .price-type__examples {
+        width: 90%;
+        max-width: 700px;
+        margin: 20px auto;
+    }
+    .price-type__info {
+        height: auto;
+        transform: none;
+    }
+    .price-type__examples {
+        height: auto;
+        padding: 20px;
+    }
+    .price-type__chart {
+        width: 100%;
+        max-width: 320px;
+        height: 140px;
+    }
+    .price-type__example-text {
+        font-size: 16px;
+    }
+    .form {
+        margin: 20px auto;
+        width: 90%;
+        max-width: 390px;
+        height: auto;
+    }
+    .background-layer {
+        background-attachment: scroll;
+    }
+    .block--first::before {
+        background-attachment: scroll;
+    }
+}
+
+@media (max-width: 768px) {
+    .block {
+        padding: 15px;
+    }
+
+    .block__title {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    .block__description br {
+        display: none;
+    }
+    .services,
+    .finishing-options,
+    .ideas,
+    .parameters {
+        gap: 15px;
+    }
+    .service-card,
+    .finishing-card,
+    .idea-card,
+    .parameter-card {
+        flex: 1 1 320px;
+        width: auto;
+    }
+    .finishing-card--wide {
+        flex: 1 1 100%;
+        max-width: 587px;
+        height: 320px;
+    }
+    .parameter-card {
+        margin-top: 120px;
+        margin-bottom: 60px;
+    }
+    .parameter-card__image {
+        width: 250px;
+        height: 250px;
+        top: -120px;
+    }
+    .price-type__info {
+        padding: 20px;
+        height: auto;
+        width: 100%;
+    }
+    .price-type__examples {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        height: auto;
+        width: 100%;
+        padding: 18px 16px;
+    }
+    .finishing-card__description {
+        padding: 18px;
+        padding-bottom: 75px;
+        overflow: auto;
+    }
+    .finishing-card__description-title {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+    .finishing-card__description-text {
+        font-size: 14px;
+        line-height: 1.35;
+    }
+    .finishing-card .button--order {
+        left: 18px;
+        bottom: 18px;
+        padding: 14px 18px;
+        font-size: 14px;
+    }
+    .finishing-card--wide .finishing-card__title-wide {
+        position: absolute;
+        top: 18px;
+        left: 18px;
+        right: 18px;
+        margin: 0;
+        font-size: 20px;
+        line-height: 1.2;
+    }
+    .finishing-card--wide .finishing-card__price-wide {
+        position: absolute;
+        left: 18px;
+        bottom: 18px;
+        margin: 0;
+        font-size: 16px;
+    }
+    .form {
+        width: 100%;
+        max-width: 390px;
+        height: auto;
+    }
+    .form__row {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .form__row input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .block__title {
+        font-size: 24px;
+    }
+
+    .services,
+    .finishing-options,
+    .ideas,
+    .parameters {
+        gap: 14px;
+    }
+    .service-card,
+    .finishing-card,
+    .idea-card,
+    .parameter-card {
+        flex: 1 1 100%;
+        max-width: 390px;
+    }
+    .finishing-card--wide {
+        height: 280px;
+        max-width: 587px;
+    }
+    .finishing-card__title,
+    .finishing-card__title-wide,
+    .finishing-card__price,
+    .finishing-card__price-wide {
+        margin: 20px;
+        font-size: 20px;
+    }
+    .finishing-card__description {
+        padding: 14px;
+        padding-bottom: 78px;
+        overflow: auto;
+    }
+    .finishing-card .button--order {
+        left: 14px;
+        bottom: 14px;
+        padding: 12px 16px;
+        font-size: 13px;
+    }
+    .finishing-card--wide .finishing-card__title-wide {
+        top: 14px;
+        left: 14px;
+        right: 14px;
+        font-size: 18px;
+    }
+    .finishing-card--wide .finishing-card__price-wide {
+        left: 14px;
+        bottom: 14px;
+        font-size: 15px;
+    }
+    .parameter-card__image {
+        width: 220px;
+        height: 220px;
+        top: -110px;
+    }
+    .parameter-card__content {
+        padding: 130px 15px 15px 15px;
+    }
+    .idea-card__text {
+        font-size: 18px;
+    }
+}
